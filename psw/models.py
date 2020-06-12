@@ -11,7 +11,7 @@ class BaseEntity(models.Model):
 
 class Exercice(BaseEntity):
     name = models.CharField(max_length = 100)
-    exo_file = models.ImageField(blank=False, null=False)
+    exo_file = models.FileField(blank=False, null=False)
 
     def __str__(self):
     	return self.exo_file
