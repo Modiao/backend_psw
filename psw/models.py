@@ -1,11 +1,11 @@
 from django.db import models
-from cloudinary.models import CloudinaryField
+from simple_history.models import HistoricalRecords
 # Create your models here.
 
 NIVEAU =(
     (1, "Sixieme College"),
     (2, "Cinquieme College"),
-    (4, "Sixieme College"),
+    (4, "Quatrieme College"),
     (5, "troisieme College"),
     (6, "Seconde Lycee"),
     (7, "Premiere Lycee"),
@@ -20,8 +20,10 @@ class BaseEntity(models.Model):
 
 class Exercice(BaseEntity):
     name = models.CharField(max_length = 100)
-    exo_file = models.FileField(upload_to='media',blank=True, null=True)
+    exo_file = models.ImageField(upload_to='media',blank=True, null=True)
     niveau  = models.CharField(max_length = 6, choices = NIVEAU, default=0)
+    description = models.TextField(blank= True)
+    historique = HistoricalRecords()
 
     def __str__(self):
-    	return self.name
+        return str(self.name) + str(self.niveau)

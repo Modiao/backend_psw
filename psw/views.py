@@ -10,7 +10,7 @@ class  ExerciceAPIView(mixins.CreateModelMixin, generics.ListAPIView):
     "Exercice list and  View"
     lookup_field = 'id'
     serializer_class = ExerciceSerializer
-    permission_classes = (IsAuthenticated, ) 
+    #permission_classes = (IsAuthenticated, ) 
 
     def get_queryset(self):
         qs = Exercice.objects.all()
@@ -23,7 +23,7 @@ class  ExerciceAPIView(mixins.CreateModelMixin, generics.ListAPIView):
 
 class  ExerciceRudView(generics.RetrieveUpdateDestroyAPIView):
     "Exercice Rud View"
-    permission_classes = (IsAuthenticated, ) 
+    #permission_classes = (IsAuthenticated, ) 
     lookup_field = 'id'
     serializer_class = ExerciceSerializer
 
