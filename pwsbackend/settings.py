@@ -14,7 +14,7 @@ import os
 import django_heroku
 from django.core.exceptions import ImproperlyConfigured
 import cloudinary
-from utils.need import get_env_value
+from utils.needs import get_env_value
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -85,12 +85,6 @@ WSGI_APPLICATION = 'pwsbackend.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 
-def get_env_value(env_variable):
-    try:
-        return os.environ.get(env_variable)
-    except KeyError:
-        error_msg = 'Set the {} environment variable'.format(env_variable)
-        raise ImproperlyConfigured(error_msg)
 
 
 DATABASES = {
