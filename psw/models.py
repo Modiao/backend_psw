@@ -27,3 +27,13 @@ class Exercice(BaseEntity):
 
     def __str__(self):
         return str(self.name) + str(self.niveau)
+    
+class Courses(BaseEntity):
+    name = models.CharField(max_length = 100)
+    Course_file = models.ImageField(upload_to='media',blank=True, null=True)
+    niveau  = models.CharField(max_length = 6, choices = NIVEAU, default=0)
+    description = models.TextField(blank= True)
+    historique = HistoricalRecords()
+
+    def __str__(self):
+        return str(self.name) + str(self.niveau)
