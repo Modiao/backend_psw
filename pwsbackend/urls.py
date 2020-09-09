@@ -17,6 +17,8 @@ urlpatterns = [
          name ='token_refresh'),
     path('api/exercices/', ExerciceAPIView.as_view(), name='exercices-list'),
     path('api/exercices/<int:id>/', ExerciceRudView.as_view(), name='exercices-rud'),
+     path('api/course/', CourseAPIView.as_view(), name='course-list'),
+    path('api/course/<int:id>/', CourseRudView.as_view(), name='course-rud'),
 
 ]
 

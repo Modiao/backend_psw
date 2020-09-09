@@ -20,7 +20,7 @@ class BaseEntity(models.Model):
 
 class Exercice(BaseEntity):
     name = models.CharField(max_length = 100)
-    exercice_file = models.ImageField(upload_to='media',blank=True, null=True)
+    exercice_file = models.ImageField(upload_to='exercice',blank=True, null=True)
     niveau  = models.CharField(max_length = 6, choices = NIVEAU, default=0)
     description = models.TextField(blank= True)
     historique = HistoricalRecords()
@@ -30,7 +30,7 @@ class Exercice(BaseEntity):
     
 class Courses(BaseEntity):
     name = models.CharField(max_length = 100)
-    Course_file = models.ImageField(upload_to='media',blank=True, null=True)
+    Course_file = models.ImageField(upload_to='course',blank=True, null=True)
     niveau  = models.CharField(max_length = 6, choices = NIVEAU, default=0)
     description = models.TextField(blank= True)
     historique = HistoricalRecords()
