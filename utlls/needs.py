@@ -1,6 +1,6 @@
 import os
 from django.core.exceptions import ImproperlyConfigured
-
+#test fix
 
 def get_env_value(env_variable):
     try:
