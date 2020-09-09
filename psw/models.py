@@ -3,13 +3,13 @@ from simple_history.models import HistoricalRecords
 # Create your models here.
 
 NIVEAU =(
-    (1, "Sixieme College"),
-    (2, "Cinquieme College"),
-    (4, "Quatrieme College"),
-    (5, "troisieme College"),
-    (6, "Seconde Lycee"),
-    (7, "Premiere Lycee"),
-    (0, "Terminale Lycee"),
+    ("1", "Sixieme College"),
+    ("2", "Cinquieme College"),
+    ("4", "Quatrieme College"),
+    ("5", "troisieme College"),
+    ("6", "Seconde Lycee"),
+    ("7", "Premiere Lycee"),
+    ("0", "Terminale Lycee"),
 )
 class BaseEntity(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
