@@ -40,7 +40,7 @@ class Courses(BaseEntity):
 
 
 class Corrections(BaseEntity):
-    exercice = models.ForeignKey(Exercice, on_delete=models.CASCADE)
+    exercice = models.ForeignKey(Exercices, on_delete=models.CASCADE)
     course_file = models.ImageField(upload_to='media',blank=True, null=True)
     description = models.TextField(blank= True)
     historique = HistoricalRecords()
