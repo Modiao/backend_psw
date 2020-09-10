@@ -19,7 +19,7 @@ class BaseEntity(models.Model):
         abstract = True
 
 class Exercices(BaseEntity):
-    name = models.CharField(max_length = 100)
+    name = models.CharField(max_length = 500)
     exercice_file = models.ImageField(upload_to='media',blank=True, null=True)
     niveau  = models.CharField(max_length = 6, choices = NIVEAU, default=0)
     description = models.TextField(blank= True)
@@ -29,7 +29,7 @@ class Exercices(BaseEntity):
         return str(self.name) + str(self.niveau)
     
 class Courses(BaseEntity):
-    name = models.CharField(max_length = 100)
+    name = models.CharField(max_length = 500)
     course_file = models.ImageField(upload_to='media',blank=True, null=True)
     niveau  = models.CharField(max_length = 6, choices = NIVEAU, default=0)
     description = models.TextField(blank= True)
@@ -40,10 +40,11 @@ class Courses(BaseEntity):
 
 
 class Corrections(BaseEntity):
+    name = models.CharField(max_length = 500, blank=True, null=True)
     exercice = models.ForeignKey(Exercices, on_delete=models.CASCADE)
-    course_file = models.ImageField(upload_to='media',blank=True, null=True)
+    correction_file = models.ImageField(upload_to='media',blank=True, null=True)
     description = models.TextField(blank= True)
     historique = HistoricalRecords()
 
     def __str__(self):
-        return str(self.name) + str(self.niveau)
+        return str(self.name) + str(self.exercice.name)
