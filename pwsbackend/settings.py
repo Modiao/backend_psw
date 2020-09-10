@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-#import django_heroku
+import django_heroku
 from django.core.exceptions import ImproperlyConfigured
 import cloudinary
 from utils.needs import get_env_value
@@ -86,11 +86,16 @@ WSGI_APPLICATION = 'pwsbackend.wsgi.application'
 
 
 DATABASES = {
-   'default': {
-       'ENGINE': 'django.db.backends.sqlite3',
-       'NAME': os.path.join(BASE_DIR, 'adjamoney_d'),
-   }
+     'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': get_env_value('DATABASE_NAME'),
+        'USER': get_env_value('USERS'),
+        'PASSWORD': get_env_value('USER_PASSWORD'),
+        'HOST': get_env_value('DATABASE_HOST'),
+        'PORT': get_env_value('DATABASE_PORT'),
+    }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -143,7 +148,7 @@ sentry_sdk.init(
     send_default_pii=True
 )
 
-#django_heroku.settings(locals())
+django_heroku.settings(locals())
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
