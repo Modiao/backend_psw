@@ -3,7 +3,8 @@ from rest_framework import generics, mixins, status
 from rest_framework.permissions import IsAuthenticated
 
 from psw.models import Exercices, Courses, Corrections
-from psw.serializers import ExerciceSerializer, CourseSerializer, CorrectionSerializer
+from psw.serializers import (ExerciceSerializer, CourseSerializer, 
+                        CorrectionGetSerializer, CorrectionPostSerializer)
 # Create your views here.
 
 class  ExerciceAPIView(mixins.CreateModelMixin, generics.ListAPIView):
@@ -28,13 +29,13 @@ class  ExerciceRudView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = ExerciceSerializer
 
     def get_queryset(self):
-         return  Exercices.objects.all()
+        return  Exercices.objects.all()
 
 
 
 
 class  CourseAPIView(mixins.CreateModelMixin, generics.ListAPIView):
-    "Exercice list and  View"
+    "Course list and  View"
     lookup_field = 'id'
     serializer_class = CourseSerializer
     #permission_classes = (IsAuthenticated, ) 
@@ -44,12 +45,13 @@ class  CourseAPIView(mixins.CreateModelMixin, generics.ListAPIView):
         return qs
 
     def  post(self,request,*args,**kwargs):
+
         return  self.create(request,*args,**kwargs)
 
 
 
 class  CourseRudView(generics.RetrieveUpdateDestroyAPIView):
-    "Exercice Rud View"
+    "Course Rud View"
     #permission_classes = (IsAuthenticated, ) 
     lookup_field = 'id'
     serializer_class = CourseSerializer
@@ -60,12 +62,15 @@ class  CourseRudView(generics.RetrieveUpdateDestroyAPIView):
 
 
 class CorrectionAPIView(mixins.CreateModelMixin, generics.ListAPIView):
-    "Exercice list and  View"
+    "Correction list and  View"
     lookup_field = 'id'
-    serializer_class = CorrectionSerializer
+    serializer_class = CorrectionPostSerializer
+    
     #permission_classes = (IsAuthenticated, ) 
 
     def get_queryset(self):
+        if self.request.method == 'GET':
+            serializer_class = CorrectionGetSerializer
         qs = Corrections.objects.all()
         return qs
 
@@ -74,14 +79,14 @@ class CorrectionAPIView(mixins.CreateModelMixin, generics.ListAPIView):
 
 
 
-class  CorrectionRudView(generics.RetrieveUpdateDestroyAPIView):
-    "Exercice Rud View"
+class CorrectionRudView(generics.RetrieveUpdateDestroyAPIView):
+    "Correct Rud View"
     #permission_classes = (IsAuthenticated, ) 
     lookup_field = 'id'
-    serializer_class = CorrectionSerializer
+    serializer_class = CorrectionPostSerializer
 
     def get_queryset(self):
-         return  Corrections.objects.all()
+        return  Corrections.objects.all()
 
 
 

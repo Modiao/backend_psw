@@ -20,7 +20,7 @@ urlpatterns = [
      path('api/courses/', CourseAPIView.as_view(), name='courses-list'),
      path('api/courses/<int:id>/', CourseRudView.as_view(), name='courses-rud'),
      path('api/corrections/', CorrectionAPIView.as_view(), name='corrections-list'),
-     path('api/corrections/<int:id>/', CourseRudView.as_view(), name='corrections-rud'),
+     path('api/corrections/<int:id>/', CorrectionRudView.as_view(), name='corrections-rud'),
 
 ]
 

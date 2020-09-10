@@ -14,7 +14,13 @@ class CourseSerializer(serializers.ModelSerializer):
 
 
 
-class CorrectionSerializer(serializers.ModelSerializer):
+class CorrectionGetSerializer(serializers.ModelSerializer):
+    exercice = ExerciceSerializer(many=True)
+    class Meta:
+        model = Corrections
+        fields = ('id' ,'name' ,'exercice' ,'correction_file','description')
+
+class CorrectionPostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Corrections
         fields = "__all__"
