@@ -5,3 +5,4 @@ from . models import Exercices, Courses, Corrections
 admin.site.register(Exercices)
 admin.site.register(Courses)
 admin.site.register(Corrections)
+admin.site.site_header = 'Maths Facile PSW ✍️ 🔥 ✍️'
